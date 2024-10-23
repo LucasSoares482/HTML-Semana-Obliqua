@@ -1,0 +1,286 @@
+<html>
+
+<head>
+    <base href="https://cop30amazonia.com/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - COP30 Amazônia 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #2C5E1E;
+            color: white;
+            padding: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .reservation-summary {
+            background: #f8f8f8;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+
+        .payment-methods {
+            margin-bottom: 2rem;
+        }
+
+        .payment-method {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .payment-method:hover {
+            background-color: #f0f0f0;
+        }
+
+        .payment-method.selected {
+            border-color: #4CAF50;
+            background-color: #f0f7f0;
+        }
+
+        .payment-details {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #2C5E1E;
+            text-decoration: none;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .payment-icons i {
+            font-size: 1.5rem;
+            color: #666;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Hospedagem COP30</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="payment-form">
+            <div class="reservation-summary">
+                <h2>Resumo da Reserva</h2>
+                <p><strong>Total a pagar:</strong> R$ 1.200,00</p>
+                <p><strong>Período:</strong> 3 noites</p>
+                <p><strong>Tipo de Hospedagem:</strong> Hotel Standard</p>
+            </div>
+
+            <div class="payment-methods">
+                <h3>Escolha a forma de pagamento:</h3>
+
+                <div class="payment-method" data-method="credit">
+                    <input type="radio" name="payment" id="credit">
+                    <label for="credit">Cartão de Crédito</label>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                    </div>
+                </div>
+
+                <div class="payment-method" data-method="debit">
+                    <input type="radio" name="payment" id="debit">
+                    <label for="debit">Cartão de Débito</label>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                </div>
+
+                <div class="payment-method" data-method="pix">
+                    <input type="radio" name="payment" id="pix">
+                    <label for="pix">PIX</label>
+                    <i class="fas fa-qrcode"></i>
+                </div>
+
+                <div class="payment-method" data-method="boleto">
+                    <input type="radio" name="payment" id="boleto">
+                    <label for="boleto">Boleto Bancário</label>
+                    <i class="fas fa-barcode"></i>
+                </div>
+
+                <div class="payment-method" data-method="cash">
+                    <input type="radio" name="payment" id="cash">
+                    <label for="cash">Dinheiro (pagamento no local)</label>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+
+            <div id="creditDetails" class="payment-details">
+                <div class="form-group">
+                    <label>Número do Cartão</label>
+                    <input type="text" placeholder="1234 5678 9012 3456">
+                </div>
+                <div class="form-group">
+                    <label>Nome no Cartão</label>
+                    <input type="text" placeholder="Nome como está no cartão">
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Validade</label>
+                        <input type="text" placeholder="MM/AA">
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123">
+                    </div>
+                </div>
+            </div>
+
+            <div id="pixDetails" class="payment-details">
+                <p>QR Code PIX será gerado após a confirmação</p>
+                <div style="text-align: center; margin: 1rem 0;">
+                    <i class="fas fa-qrcode" style="font-size: 100px;"></i>
+                </div>
+            </div>
+
+            <div id="boletoDetails" class="payment-details">
+                <p>O boleto será gerado após a confirmação</p>
+                <p>Prazo de vencimento: 3 dias úteis</p>
+            </div>
+
+            <div id="cashDetails" class="payment-details">
+                <p>Pagamento em dinheiro deve ser realizado no momento do check-in</p>
+                <p>Por favor, tenha o valor exato para facilitar o processo</p>
+            </div>
+
+            <button type="submit" id="confirmPayment">Confirmar Pagamento</button>
+        </div>
+
+        <a href="https://cop30amazonia.com/reserva" class="back-link">Voltar para Reservas</a>
+    </div>
+
+    <script>
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const paymentDetails = {
+            credit: document.getElementById('creditDetails'),
+            pix: document.getElementById('pixDetails'),
+            boleto: document.getElementById('boletoDetails'),
+            cash: document.getElementById('cashDetails')
+        };
+
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', function () {
+                // Remove selected class from all methods
+                paymentMethods.forEach(m => m.classList.remove('selected'));
+                // Add selected class to clicked method
+                this.classList.add('selected');
+
+                // Hide all payment details
+                Object.values(paymentDetails).forEach(detail => {
+                    detail.style.display = 'none';
+                });
+
+                // Show selected payment details
+                const selectedMethod = this.dataset.method;
+                if (paymentDetails[selectedMethod]) {
+                    paymentDetails[selectedMethod].style.display = 'block';
+                }
+
+                // Select the radio button
+                this.querySelector('input[type="radio"]').checked = true;
+            });
+        });
+
+        document.getElementById('confirmPayment').addEventListener('click', function () {
+            const selectedMethod = document.querySelector('.payment-method.selected');
+            if (!selectedMethod) {
+                alert('Por favor, selecione uma forma de pagamento.');
+                return;
+            }
+
+            alert('Pagamento iniciado! Você será redirecionado para concluir a transação.');
+        });
+    </script>
+</body>
+
+</html>

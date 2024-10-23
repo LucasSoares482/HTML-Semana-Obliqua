@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <base href="https://cop30amazonia.com/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COP30 Amazônia 2025 - Belém do Pará</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1920') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: background 0.3s;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-button:hover {
+            background: #45a049;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 50px 0;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">COP30</div>
+            <div class="nav-links">
+                <a href="https://cop30amazonia.com/sobre">Sobre</a>
+                <a href="https://cop30amazonia.com/programacao">Programação</a>
+                <a href="https://cop30amazonia.com/hospedagem">Hospedagem</a>
+                <a href="https://cop30amazonia.com/contato">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>COP30 Amazônia 2025</h1>
+            <p>Seja bem-vindo à página oficial de hospedagem para a COP30, a maior conferência sobre mudanças climáticas
+                do mundo, que será realizada em Belém do Pará em 2025. Encontre aqui as melhores opções de hospedagem e
+                prepare-se para fazer parte deste momento histórico na proteção do nosso planeta.</p>
+            <a href="https://cop30amazonia.com/reservas" class="cta-button">Reserve sua Hospedagem</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>Hotéis Parceiros</h3>
+                <p>Rede de hotéis credenciados com condições especiais para participantes do evento.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Hospedagem Sustentável</h3>
+                <p>Opções de acomodações com práticas sustentáveis e baixo impacto ambiental.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Experiência Local</h3>
+                <p>Viva a autêntica hospitalidade paraense com nossas opções de hospedagem familiar.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Adiciona classe para animação suave nos cards
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.animation = `fadeInUp ${0.5 + index * 0.2}s ease forwards`;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+
+</html>
